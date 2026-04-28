@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Assistant </title>
+  <meta name="description"
+    content="MediAssist is an AI-powered RAG medical information assistant that answers your health questions from trusted medical documents." />
+  <!-- Using Times New Roman system font -->
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            
+          </div>
+          <div>
+            <span class="logo-text">MediAssist</span>
+            <span class="logo-sub">AI Health Assistant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload zone -->
+      <div class="upload-section">
+        
+        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+          <div class="upload-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17,8 12,3 7,8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+          </div>
+          <p class="upload-text">Upload your PDF here or <span class="upload-link">browse</span></p>
+          <input type="file" id="fileInput" accept=".pdf" hidden multiple />
+        </div>
+        <div id="uploadProgress" class="upload-progress hidden">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="progress-label" id="progressLabel">Uploading…</span>
+        </div>
+      </div>
+
+      <!-- Document list -->
+      <div class="doc-section">
+        <h3 class="section-title">
+          Uploaded Documents
+        </h3>
+        <div class="doc-list" id="docList">
+          <div class="doc-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M9 9h6m-6 4h6m-3 4h.01M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4l-2-2H8L6 6H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z" />
+            </svg>
+            <p>No documents yet.<br />Upload a PDF to start.</p>
+          </div>
+        </div>
+        <div class="doc-stats" id="docStats"></div>
+      </div>
+
+      <!-- New chat button -->
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        New Chat
+      </button>
+    </aside>
+
+    <!-- ── Main chat area ─────────────────────────────────────── -->
+    <main class="chat-area">
+      <!-- Header -->
+      <header class="chat-header">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <div class="header-info">
+          <h1 class="header-title">Medical Information Assistant</h1>
+        </div>
+        <div class="header-actions">
+        </div>
+      </header>
+
+      <!-- Messages -->
+      <div class="messages-container" id="messagesContainer">
+        <!-- Welcome screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+          
+          <h2 class="welcome-title">Welcome to Medical Assistant</h2>
+          <p class="welcome-sub"> Upload medical PDFs and ask anything
+            about symptoms, treatments, medications, and more.</p>
+          <div class="suggestion-grid">
+            <button class="suggestion-card" data-q="What are the common symptoms of diabetes?">
+              <span class="suggestion-icon"></span>
+              <span>What are the common symptoms of diabetes?</span>
+            </button>
+            <button class="suggestion-card" data-q="What is aspirin and why it is used.">
+              <span class="suggestion-icon"></span>
+              <span>Explain the mechanism of beta-blockers</span>
+            </button>
+            <button class="suggestion-card" data-q="What is the treatment  for hypertension?">
+              <span class="suggestion-icon"></span>
+              <span>Treatment for hypertension</span>
+            </button>
+            <button class="suggestion-card" data-q="What are the risk factors for cardiovascular disease?">
+              <span class="suggestion-icon"></span>
+              <span>Risk factors for cardiovascular disease</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="chatMessages" class="chat-messages"></div>
+      </div>
+
+      <!-- Input area -->
+      <div class="input-area">
+        <div class="input-wrapper">
+          <textarea id="questionInput" rows="1" placeholder="Ask a medical question…"
+            aria-label="Medical question input"></textarea>
+          <button class="send-btn" id="sendBtn" aria-label="Send question">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22,2 15,22 11,13 2,9" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
