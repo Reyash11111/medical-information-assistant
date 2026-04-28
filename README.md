@@ -2,14 +2,14 @@ Medical Information Assistant (RAG)
 
 A production-quality Retrieval-Augmented Generation (RAG) system for medical information, built with:
 
-| Layer               | Technology                                            |
-| LLM                 | Google Gemini 1.5 Flash                               |
-| Embeddings          | sentence-transformers/all-MiniLM-L6-v2 (local, free)  |
-| Vector Store        | ChromaDB (persistent)                                 |
-| RAG Framework       | LangChain                                             |
-| Backend             | FastAPI                                               |
-| Frontend            | Vanilla HTML/CSS/JS (dark glassmorphism UI)           |
-
+| Layer | Technology |
+|---|---|
+| LLM | Google Gemini 1.5 Flash |
+| Embeddings | sentence-transformers/all-MiniLM-L6-v2 (local, free) |
+| Vector Store | ChromaDB (persistent) |
+| RAG Framework | LangChain |
+| Backend | FastAPI |
+| Frontend | Vanilla HTML/CSS/JS (dark glassmorphism UI) |
 
 1. Create virtual environment
 bash
@@ -72,12 +72,13 @@ User Question
 
 API Endpoints
 
-| Method  | Endpoint           | Description                                 |
-|GET     | /                  | Frontend UI                                 |
-|GET     | /health            | Health check + doc count                    |
-|POST    | /upload            | Upload a PDF to knowledge base              |
-|POST    | /chat              | Ask a medical question                      |
-|GET     | /documents         | List indexed documents                      |
-|DELETE  | /documents/{name}  | Remove a document                           |
+| Method | Endpoint | Description |
+|---|---|---|
+|GET | / | Frontend UI |
+|GET | /health | Health check + doc count |
+|POST | /upload | Upload a PDF to knowledge base |
+|POST | /chat | Ask a medical question |
+|GET | /documents | List indexed documents |
+|DELETE | /documents/{name} | Remove a document |
 
 
